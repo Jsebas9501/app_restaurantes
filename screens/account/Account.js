@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from 'react-native'
 import UserLogged from './UserLogged'
 import UserGuest from './UserGuest'
 import { auth } from '../../utils/firebaseConfig'
+import Loading from '../../components/Loading'
 
 export default function Account() {
     const [login, setLogin] = useState(null)
@@ -12,7 +13,7 @@ export default function Account() {
     })
 
     if(login == null){
-        return <Text>Cargando...</Text>
+        return <Loading isVisible={true} text="Cargando..."/>
     }
 
     return login ? <UserLogged/> : <UserGuest/>
